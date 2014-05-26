@@ -2,7 +2,7 @@ player = {
 	x: settings.sizes.x, 
 	y: 0, 
 	left: false, 
-	right: true, 
+	right: false, 
 	up: false, 
 	down: false, 
 	space: false,
@@ -48,6 +48,87 @@ player = {
 			}
 		}
 	},
+	keys: function(){
+		document.addEventListener("keydown", function(e){
+			var kc = e.keyCode;
+			if(kc == 65 || kc == 37){ player.left 	= true };
+			if(kc == 87 || kc == 38){ player.up 	= true };
+			if(kc == 68 || kc == 39){ player.right 	= true };
+			if(kc == 83 || kc == 40){ player.down 	= true };
+			if(kc == 32)			{ player.space 	= true };
+		})
+		document.addEventListener("keyup", function(e){
+			var kc = e.keyCode;
+			if(kc == 65 || kc == 37){ player.left 	= false };
+			if(kc == 87 || kc == 38){ player.up 	= false };
+			if(kc == 68 || kc == 39){ player.right 	= false };
+			if(kc == 83 || kc == 40){ player.down 	= false };
+			if(kc == 32)			{ player.space 	= false };
+		})
+	},
+	movement: function(){
+		if(player.left){
+			player.x = player.x - settings.sizes.x;
+			if(player.x < 0){
+				player.x = 0;
+			}
+			if(
+				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+			){
+				player.x = player.x + settings.sizes.x;
+			}
+		}
+		if(player.right){
+			player.x = player.x + settings.sizes.x;
+			if(player.x > (map[0].length - 1) * settings.sizes.x){
+				player.x = (map[0].length - 1) * settings.sizes.x;
+			}
+			if(
+				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+			){
+				player.x = player.x - settings.sizes.x;
+			}
+		}
+		if(player.up){
+			/*
+			player.y = player.y - settings.sizes.y * 2;
+			if(player.y < 0){
+				player.y = 0;
+			}*/
+			if(player.left && 
+				(
+					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x - 1][0] == 0 ||
+					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x - 1][0] == 3
+				)
+			){
+				player.y = player.y - settings.sizes.y * 2;
+				player.x = player.x - settings.sizes.x;
+			}
+			if(player.right && 
+				(
+					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x + 1][0] == 0 ||
+					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x + 1][0] == 3
+				)
+			){
+				player.y = player.y - settings.sizes.y * 2;
+				player.x = player.x + settings.sizes.x;
+			}
+		}
+		if(player.down){
+			player.y = player.y + settings.sizes.y;
+			if(player.y > (map.length - 1) * settings.sizes.y){
+				player.y = (map.length - 1) * settings.sizes.y;
+			}
+			if(
+				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+			){
+				player.y = player.y - settings.sizes.y;
+			}
+		}
+	}/*
 	move: function(){
 		document.addEventListener("keydown", function(e){
 			switch(e.keyCode){
@@ -56,13 +137,19 @@ player = {
 						player.x = player.x - settings.sizes.x;
 						if(player.x < 0){
 							player.x = 0;
-						}
+						}/*
+						if(
+							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+						){
+							player.x = player.x + settings.sizes.x;
+						}*
 					}
 					player.left = true; player.right = false; player.up = false; player.down = false;
 					break;
 				case 38: // Up
 					if(player.up){
-						player.y = player.y - settings.sizes.y;
+						player.y = player.y - settings.sizes.y * 2;
 						if(player.y < 0){
 							player.y = 0;
 						}
@@ -74,7 +161,13 @@ player = {
 						player.x = player.x + settings.sizes.x;
 						if(player.x > (map[0].length - 1) * settings.sizes.x){
 							player.x = (map[0].length - 1) * settings.sizes.x;
-						}
+						}/*
+						if(
+							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+						){
+							player.x = player.x - settings.sizes.x;
+						}*
 					}
 					player.left = false; player.right = true; player.up = false; player.down = false;
 					break;
@@ -83,7 +176,13 @@ player = {
 						player.y = player.y + settings.sizes.y;
 						if(player.y > (map.length - 1) * settings.sizes.y){
 							player.y = (map.length - 1) * settings.sizes.y;
-						}
+						}/*
+						if(
+							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+						){
+							player.y = player.y - settings.sizes.y;
+						}*
 					}
 					player.left = false; player.right = false; player.up = false; player.down = true;
 					break;
@@ -96,5 +195,5 @@ player = {
 		document.addEventListener("keyup", function(e){
 			if(e.keyCode == 32){ player.space = false; } // Space
 		})
-	}
+	}*/
 }
