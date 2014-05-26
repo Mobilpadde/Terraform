@@ -3,10 +3,10 @@ var c = document.getElementById("board"),
 	placeable = [0, 1, 2, 3],
 	init = function(){
 		setInterval(function(){
-			physics.air();
-			physics.water();
-			physics.ground();
-			physics.blocks();
+			physics.air(); 		// Make the player fall if he's in the air
+			physics.water(); 	// Make water move like "real" water
+			physics.ground(); 	// Make blocks "non-go-through"-able
+			physics.blocks(); 	// Make grass fall down
 			draw.map();
 		}, 1000/30);
 		setInterval(function(){

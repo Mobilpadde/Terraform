@@ -17,6 +17,7 @@ generate = {
 			this.map.push(tmpMap);
 		}
 
+		// Make some caves
 		for(var i = 0; i < (Math.floor(height / settings.sizes.y) * Math.floor(width / settings.sizes.x)) * 0.07; i++){
 			this.tmp.y = Math.floor(Math.random() * Math.floor(height / settings.sizes.y)) + this.ground.y;
 			this.tmp.x = Math.floor(this.map[0].length * Math.random());
@@ -36,6 +37,7 @@ generate = {
 			}
 		}
 
+		// We need water, sir!
 		for(var i = 0; i < 20; i++){
 			this.tmp.y = Math.floor(Math.random() * Math.floor(height / settings.sizes.y) + (this.ground.y + 4));
 			this.tmp.x = Math.floor((this.map[0].length - 4) * Math.random());
