@@ -2,4 +2,4 @@ TODO
 =====
 
 * Sand
-* Inventory
+* Crafting
