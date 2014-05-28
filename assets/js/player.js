@@ -76,12 +76,14 @@ player = {
 	keys: function(){
 		document.addEventListener("keydown", function(e){
 			var kc = e.keyCode;
+			//e.preventDefault();
 			if(kc == 65 || kc == 37){ player.left 	= true };
 			if(kc == 87 || kc == 38){ player.up 	= true };
 			if(kc == 68 || kc == 39){ player.right 	= true };
 			if(kc == 83 || kc == 40){ player.down 	= true };
 			if(kc == 32)			{ player.space 	= true };
 			if(kc == 77)			{ player.map 	= true };
+			//return false;
 		})
 		document.addEventListener("keyup", function(e){
 			var kc = e.keyCode;
