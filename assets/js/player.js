@@ -1,11 +1,12 @@
 player = { 
-	x: settings.sizes.x, 
-	y: 0, 
+	x: settings.sizes.x * 7, 
+	y: settings.sizes.y * 7, 
 	left: false, 
 	right: false, 
 	up: false, 
 	down: false, 
 	space: false,
+	map: true,
 	type: 0,
 	colour: settings.colours.player[Math.floor(settings.colours.player.length * Math.random())],
 	dig: function(){
@@ -56,6 +57,7 @@ player = {
 			if(kc == 68 || kc == 39){ player.right 	= true };
 			if(kc == 83 || kc == 40){ player.down 	= true };
 			if(kc == 32)			{ player.space 	= true };
+			if(kc == 77)			{ player.map 	= true };
 		})
 		document.addEventListener("keyup", function(e){
 			var kc = e.keyCode;
@@ -64,6 +66,7 @@ player = {
 			if(kc == 68 || kc == 39){ player.right 	= false };
 			if(kc == 83 || kc == 40){ player.down 	= false };
 			if(kc == 32)			{ player.space 	= false };
+			if(kc == 77)			{ player.map 	= false };
 		})
 	},
 	movement: function(){
@@ -92,12 +95,7 @@ player = {
 			}
 		}
 		if(player.up){
-			/*
-			player.y = player.y - settings.sizes.y * 2;
-			if(player.y < 0){
-				player.y = 0;
-			}*/
-			if(player.left && 
+			if(player.left && map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x - 1] !== undefined &&
 				(
 					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x - 1][0] == 0 ||
 					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x - 1][0] == 3
@@ -106,7 +104,7 @@ player = {
 				player.y = player.y - settings.sizes.y * 2;
 				player.x = player.x - settings.sizes.x;
 			}
-			if(player.right && 
+			if(player.right && map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x + 1] !== undefined &&
 				(
 					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x + 1][0] == 0 ||
 					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x + 1][0] == 3
@@ -128,72 +126,5 @@ player = {
 				player.y = player.y - settings.sizes.y;
 			}
 		}
-	}/*
-	move: function(){
-		document.addEventListener("keydown", function(e){
-			switch(e.keyCode){
-				case 37: // Left
-					if(player.left){
-						player.x = player.x - settings.sizes.x;
-						if(player.x < 0){
-							player.x = 0;
-						}/*
-						if(
-							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
-							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
-						){
-							player.x = player.x + settings.sizes.x;
-						}*
-					}
-					player.left = true; player.right = false; player.up = false; player.down = false;
-					break;
-				case 38: // Up
-					if(player.up){
-						player.y = player.y - settings.sizes.y * 2;
-						if(player.y < 0){
-							player.y = 0;
-						}
-					}
-					player.left = false; player.right = false; player.up = true; player.down = false;
-					break;
-				case 39: // Right
-					if(player.right){
-						player.x = player.x + settings.sizes.x;
-						if(player.x > (map[0].length - 1) * settings.sizes.x){
-							player.x = (map[0].length - 1) * settings.sizes.x;
-						}/*
-						if(
-							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
-							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
-						){
-							player.x = player.x - settings.sizes.x;
-						}*
-					}
-					player.left = false; player.right = true; player.up = false; player.down = false;
-					break;
-				case 40: // Down
-					if(player.down){
-						player.y = player.y + settings.sizes.y;
-						if(player.y > (map.length - 1) * settings.sizes.y){
-							player.y = (map.length - 1) * settings.sizes.y;
-						}/*
-						if(
-							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
-							map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
-						){
-							player.y = player.y - settings.sizes.y;
-						}*
-					}
-					player.left = false; player.right = false; player.up = false; player.down = true;
-					break;
-				case 32: // Space
-					player.space = true;
-					//player.dig();
-					break;
-			}
-		})
-		document.addEventListener("keyup", function(e){
-			if(e.keyCode == 32){ player.space = false; } // Space
-		})
-	}*/
+	}
 }

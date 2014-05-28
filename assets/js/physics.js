@@ -33,13 +33,6 @@ physics = {
 			}
 		}
 	},
-	ground: function(){ // Don't walk through blocks
-		if(
-			[1, 2].inBetween(map[player.y / settings.sizes.y][player.x / settings.sizes.x][0])
-		){
-			player.y = player.y - settings.sizes.y;
-		}
-	},
 	blocks: function(){ // Let blocks fall down
 		for(var y = 0; y < map.length; y++){
 			for(var x = 0; x < map[y].length; x++){
