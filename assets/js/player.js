@@ -12,37 +12,37 @@ player = {
 		if(player.space){
 			if(player.left){
 				if(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1] !== undefined){
-					var time = new Date().getTime();
+					inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0]);
 					map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] = 0;
 					if(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1] !== undefined){
-						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1][1] = time;
+						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1][1] = new Date().getTime();
 					}
 				}
 			}
 			if(player.right){
 				if(map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1] !== undefined){
-					var time = new Date().getTime();
+					inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0])
 					map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0] = 0;
 					if(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1] !== undefined){
-						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1][1] = time;
+						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1][1] = new Date().getTime();
 					}
 				}
 			}
 			if(player.up){
 				if(map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x] !== undefined){
-					var time = new Date().getTime();
+					inventory.add(map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x])
 					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x][0] = 0;
 					if(map[player.y / settings.sizes.y][player.x / settings.sizes.x] !== undefined){
-						map[player.y / settings.sizes.y][player.x / settings.sizes.x][1] = time;
+						map[player.y / settings.sizes.y][player.x / settings.sizes.x][1] = new Date().getTime();
 					}
 				}
 			}
 			if(player.down){
 				if(map[player.y / settings.sizes.y + 1] !== undefined){
-					var time = new Date().getTime();
+					inventory.add(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0])
 					map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0] = 0;
 					if(map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x] !== undefined){
-						map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x][1] = time;
+						map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x][1] = new Date().getTime();
 					}
 				}
 			}

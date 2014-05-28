@@ -1,6 +1,6 @@
 TODO
 =====
 
-* Make sand
+* Sand
 * Inventory
 * 2d-side-scroller-ify

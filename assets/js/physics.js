@@ -12,7 +12,7 @@ physics = {
 	water: function(){ // Water physics, yay
 		for(var y = 0; y < map.length; y++){
 			for(var x = 0; x < map[y].length; x++){
-				if(map[y][x][0] === 3){
+				if(map[y][x][0] == 3){
 					if(
 						map[y + 1] !== undefined && map[y] !== undefined &&
 						map[y][x + 1] !== undefined && map[y][x - 1] !== undefined
@@ -43,7 +43,7 @@ physics = {
 	blocks: function(){ // Let blocks fall down
 		for(var y = 0; y < map.length; y++){
 			for(var x = 0; x < map[y].length; x++){
-				if(map[y][x][0] === 1){ // if([1, 2].inBetween(map[y][x][0])){ // Both grass and ground
+				if(map[y][x][0] == 4){ // if([1, 2].inBetween(map[y][x][0])){ // Both grass and ground
 					if(
 						map[y + 1] !== undefined && map[y] !== undefined &&
 						map[y][x + 1] !== undefined && map[y][x - 1] !== undefined

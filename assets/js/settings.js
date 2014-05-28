@@ -5,7 +5,8 @@ settings = {
 			0: "#3c98c3", 	// Sky
 			1: "#0ef192", 	// Grass
 			2: "#b3664d", 	// Ground
-			3: "#3c45c3"	// Water
+			3: "#3c45c3",	// Water
+			4: "#ffcc00"	// Sand
 		}
 	},
 	sizes: {
