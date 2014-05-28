@@ -12,10 +12,6 @@ draw = {
 		c.height = map.length * settings.sizes.y;
 		for(var y = 0; y < map.length; y++){
 			for(var x = 0; x < map[y].length; x++){
-				var time = new Date().getTime();
-				if(map[y][x][0] == 2 && map[y - 1][x][0] == 0 && map[y - 2][x][0] == 0 && time - map[y][x][1] > 10000){
-					map[y][x][0] = 1; // Make it grow
-				}
 				draw.tile(settings.sizes.x * x, settings.sizes.y * y, map[y][x]);
 			}
 		}
