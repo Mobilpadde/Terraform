@@ -5,7 +5,7 @@ var c = document.getElementById("board"),
 		setInterval(function(){
 			physics.air(); 		// Make the player fall if he's in the air
 			physics.water(); 	// Make water move like "real" water
-			physics.grass(); // Makes the grass grow
+			physics.grass(); 	// Makes the grass grow
 			physics.blocks(); 	// Make grass fall down
 			draw.map();
 		}, 1000/30);
