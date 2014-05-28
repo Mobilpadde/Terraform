@@ -2,3 +2,21 @@ body{
 	margin: 0; 
 	padding: 0;
 }
+#board{
+	float: left;
+}
+#inventory{
+	width: 180px;
+	float: left;
+}
+#inventory li{
+	width: 50px;
+	height: 15px;
+	background: red;
+	color: #fff;
+	margin: 5px;
+	padding-top: 35px;
+	float: left;
+	list-style-type: none;
+	text-align: center;
+}

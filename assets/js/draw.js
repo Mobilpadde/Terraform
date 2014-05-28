@@ -5,7 +5,7 @@ draw = {
 			ctx.fillRect(x - settings.sizes.x / 8, y - settings.sizes.y / 8, settings.sizes.x + settings.sizes.x / 4, settings.sizes.y + settings.sizes.y / 4);
 		}
 		if(arr !== undefined){
-			ctx.fillStyle = settings.colours.ground[arr[0]];
+			ctx.fillStyle = settings.colours.ground[arr[0]][0];
 			ctx.fillRect(x, y, settings.sizes.x, settings.sizes.y);
 		}else{
 			ctx.fillStyle = settings.colours.ground[5];
@@ -14,6 +14,7 @@ draw = {
 	},
 	map: function(){
 		if(player.map){
+			inventoryUser.style.display = "none";
 			c.width = map[0].length * settings.sizes.x;
 			c.height = map.length * settings.sizes.y;
 			for(var y = 0; y < map.length; y++){
@@ -58,6 +59,7 @@ draw = {
 				);
 			}
 		}else{
+			inventoryUser.style.display = "block";
 			c.width = settings.sizes.x * 15;
 			c.height = settings.sizes.y * 15;
 			var i = 0;

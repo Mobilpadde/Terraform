@@ -1,4 +1,5 @@
 var c = document.getElementById("board"),
+	inventoryUser = document.getElementById("inventory"),
 	ctx = c.getContext("2d"),
 	placeable = [0, 1, 2, 3],
 	init = function(){
@@ -7,6 +8,7 @@ var c = document.getElementById("board"),
 			physics.water(); 	// Make water move like "real" water
 			physics.grass(); 	// Makes the grass grow
 			physics.blocks(); 	// Make grass fall down
+			inventory.show();
 			draw.map();
 		}, 1000/30);
 		setInterval(function(){

@@ -16,5 +16,15 @@ inventory = {
 		}else{
 			inventory.items[item]--;
 		}
+	},
+	show: function(){
+		inventoryUser.innerHTML = "";
+		for(i in inventory.items){
+			var elm = document.createElement("li");
+			elm.style.background = settings.colours.ground[i][0];
+			elm.title = settings.colours.ground[i][1];
+			elm.innerText = inventory.items[i];
+			inventoryUser.appendChild(elm);
+		}
 	}
 }
