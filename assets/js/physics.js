@@ -1,6 +1,12 @@
 physics = {
 	air: function(){ // Fall down with you stand on air
-		if(!(player.y / settings.sizes.y == map.length - 1)){
+		if(
+			!(player.y / settings.sizes.y == map.length - 1) &&
+			map[(player.y + settings.sizes.y) / settings.sizes.y] !== undefined &&
+			map[(player.y + settings.sizes.y) / settings.sizes.y][player.x / settings.sizes.x] !== undefined &&
+			map[player.y / settings.sizes.y] !== undefined &&
+			map[player.y / settings.sizes.y][player.x / settings.sizes.x] !== undefined
+		){
 			if(
 				map[(player.y + settings.sizes.y) / settings.sizes.y][player.x / settings.sizes.x][0] === 0 && 
 				map[player.y / settings.sizes.y][player.x / settings.sizes.x][0] === 0

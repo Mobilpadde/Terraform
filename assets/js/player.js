@@ -6,43 +6,67 @@ player = {
 	up: false, 
 	down: false, 
 	space: false,
-	map: true,
+	map: false,
 	type: 0,
 	colour: settings.colours.player[Math.floor(settings.colours.player.length * Math.random())],
 	dig: function(){
 		if(player.space){
 			if(player.left){
-				if(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1] !== undefined){
+				if(
+					map[player.y / settings.sizes.y] !== undefined &&
+					map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1] !== undefined
+				){
 					inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0]);
 					map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] = 0;
-					if(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1] !== undefined){
+					if(
+						map[player.y / settings.sizes.y + 1] !== undefined &&
+						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1] !== undefined
+					){
 						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1][1] = new Date().getTime();
 					}
 				}
 			}
 			if(player.right){
-				if(map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1] !== undefined){
+				if(
+					map[player.y / settings.sizes.y] !== undefined &&
+					map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1] !== undefined
+				){
 					inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0])
 					map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0] = 0;
-					if(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1] !== undefined){
+					if(
+						map[player.y / settings.sizes.y + 1] !== undefined &&
+						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1] !== undefined
+					){
 						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1][1] = new Date().getTime();
 					}
 				}
 			}
 			if(player.up){
-				if(map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x] !== undefined){
+				if(
+					map[player.y / settings.sizes.y - 1] !== undefined &&
+					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x] !== undefined
+				){
 					inventory.add(map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x])
 					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x][0] = 0;
-					if(map[player.y / settings.sizes.y][player.x / settings.sizes.x] !== undefined){
+					if(
+						map[player.y / settings.sizes.y] !== undefined &&
+						map[player.y / settings.sizes.y][player.x / settings.sizes.x] !== undefined
+					){
 						map[player.y / settings.sizes.y][player.x / settings.sizes.x][1] = new Date().getTime();
 					}
 				}
 			}
 			if(player.down){
-				if(map[player.y / settings.sizes.y + 1] !== undefined){
+				if(
+					map[player.y / settings.sizes.y + 1] !== undefined && 
+					map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x] !== undefined
+				){
 					inventory.add(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0])
 					map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0] = 0;
-					if(map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x] !== undefined){
+					if(
+						map[player.y / settings.sizes.y + 2] !== undefined &&
+						map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x] !== undefined
+					){
 						map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x][1] = new Date().getTime();
 					}
 				}
@@ -75,11 +99,13 @@ player = {
 			if(player.x < 0){
 				player.x = 0;
 			}
-			if(
-				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
-				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
-			){
-				player.x = player.x + settings.sizes.x;
+			if(map[player.y / settings.sizes.y] !== undefined && map[player.y / settings.sizes.y][player.x / settings.sizes.y] !== undefined){
+				if(
+					map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+					map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+				){
+					player.x = player.x + settings.sizes.x;
+				}
 			}
 		}
 		if(player.right){
@@ -87,11 +113,13 @@ player = {
 			if(player.x > (map[0].length - 1) * settings.sizes.x){
 				player.x = (map[0].length - 1) * settings.sizes.x;
 			}
-			if(
-				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
-				map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
-			){
-				player.x = player.x - settings.sizes.x;
+			if(map[player.y / settings.sizes.y] !== undefined && map[player.y / settings.sizes.y][player.x / settings.sizes.y] !== undefined){
+				if(
+					map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 0 &&
+					map[player.y / settings.sizes.y][player.x / settings.sizes.y][0] != 3
+				){
+					player.x = player.x - settings.sizes.x;
+				}
 			}
 		}
 		if(player.up){

@@ -6,7 +6,8 @@ settings = {
 			1: "#0ef192", 	// Grass
 			2: "#b3664d", 	// Ground
 			3: "#3c45c3",	// Water
-			4: "#ffcc00"	// Sand
+			4: "#ffcc00",	// Sand
+			5: "#333333" 	// Undestructable
 		}
 	},
 	sizes: {
