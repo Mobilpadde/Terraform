@@ -5,18 +5,30 @@ body{
 #board{
 	float: left;
 }
-#inventory{
+.holder{
 	width: 180px;
 	float: left;
 }
-#inventory li{
+.holder span, .holder ul{
+	width: 100%;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+.holder span{
+	text-align: center;
+}
+#inventory li, #craftingTable li{
 	width: 50px;
 	height: 15px;
-	background: red;
+	background: #eee;
 	color: #fff;
 	margin: 5px;
 	padding-top: 35px;
 	float: left;
 	list-style-type: none;
 	text-align: center;
+}
+#inventory li.selected, #craftingTable li.selected{
+
 }

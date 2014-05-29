@@ -7,14 +7,27 @@
 	</head>
 	<body>
 		<canvas id="board"></canvas>
-		<ul id="inventory">
-			<li class="sand">Sand</li>
-			<li class="sand">Sand</li>
-			<li class="sand">Sand</li>
-			<li class="sand">Sand</li>
-		</ul>
+		<div class="holder">
+			<span>Inventory</span>
+			<ul id="inventory"></ul>
+		</div class="holder">
+		<div class="holder">
+			<span>Crafting Table</span>
+			<ul id="craftingTable">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
 		<script src="assets/js/settings.js"></script>
 		<script src="assets/js/inventory.js"></script>
+		<script src="assets/js/crafting.js"></script>
 		<script src="assets/js/player.js"></script>
 		<script src="assets/js/physics.js"></script>
 		<script src="assets/js/generate.js"></script>

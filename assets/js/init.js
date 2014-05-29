@@ -1,4 +1,5 @@
 var c = document.getElementById("board"),
+	holder = document.getElementsByClassName("holder"),
 	inventoryUser = document.getElementById("inventory"),
 	ctx = c.getContext("2d"),
 	placeable = [0, 1, 2, 3],

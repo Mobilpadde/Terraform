@@ -14,7 +14,9 @@ draw = {
 	},
 	map: function(){
 		if(player.map){
-			inventoryUser.style.display = "none";
+			for(var i = 0; i < holder.length; i++){
+				holder[i].style.display = "none";
+			}
 			c.width = map[0].length * settings.sizes.x;
 			c.height = map.length * settings.sizes.y;
 			for(var y = 0; y < map.length; y++){
@@ -59,7 +61,9 @@ draw = {
 				);
 			}
 		}else{
-			inventoryUser.style.display = "block";
+			for(var i = 0; i < holder.length; i++){
+				holder[i].style.display = "block";
+			}
 			c.width = settings.sizes.x * 15;
 			c.height = settings.sizes.y * 15;
 			var i = 0;
