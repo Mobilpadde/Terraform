@@ -26,5 +26,16 @@ inventory = {
 			elm.innerText = inventory.items[i];
 			inventoryUser.appendChild(elm);
 		}
+	},
+	select: function(){
+		var items = inventoryUser.getElementsByTagName("li");
+		for(var i = 0; i < items.length; i++){
+			items[i].addEventListener("click", function(e){
+				if(inventoryUser.getElementsByClassName("selected")[0]){
+					inventoryUser.getElementsByClassName("selected")[0].className = "";
+				}
+				this.className = "selected";
+			})
+		}
 	}
 }

@@ -11,6 +11,8 @@ player = {
 	colour: settings.colours.player[Math.floor(settings.colours.player.length * Math.random())],
 	dig: function(){
 		if(player.space){
+			inventory.show();
+			inventory.select();
 			if(player.left){
 				if(
 					map[player.y / settings.sizes.y] !== undefined &&

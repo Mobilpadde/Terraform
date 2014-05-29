@@ -30,5 +30,8 @@ body{
 	text-align: center;
 }
 #inventory li.selected, #craftingTable li.selected{
-
+	width: 48px;
+	height: 14px;
+	padding-top: 34px;
+	border: 1px solid red;
 }
