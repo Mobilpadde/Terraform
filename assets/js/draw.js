@@ -61,15 +61,16 @@ draw = {
 				);
 			}
 		}else{
+			var offset = 14;
 			for(var i = 0; i < holder.length; i++){
 				holder[i].style.display = "block";
 			}
-			c.width = settings.sizes.x * 15;
-			c.height = settings.sizes.y * 15;
+			c.width = settings.sizes.x * (offset + 8);
+			c.height = settings.sizes.y * (offset + 8);
 			var i = 0;
-			for(var y = (player.y / settings.sizes.y) - 7; y <= (player.y / settings.sizes.y) + 7; y++){
+			for(var y = (player.y / settings.sizes.y) - offset; y <= (player.y / settings.sizes.y) + offset; y++){
 				j = 0;
-				for(var x = (player.x / settings.sizes.x) - 7; x <= (player.x / settings.sizes.x) + 7; x++){
+				for(var x = (player.x / settings.sizes.x) - offset; x <= (player.x / settings.sizes.x) + offset; x++){
 					if(map[y] !== undefined && map[y][x] !== undefined){
 						draw.tile(settings.sizes.x * j, settings.sizes.y * i, map[y][x]);
 					}
@@ -78,37 +79,37 @@ draw = {
 				i++;
 			}
 			ctx.fillStyle = player.colour;
-			ctx.fillRect(7 * settings.sizes.x, 7 * settings.sizes.y, settings.sizes.x, settings.sizes.y);
+			ctx.fillRect(offset * settings.sizes.x, offset * settings.sizes.y, settings.sizes.x, settings.sizes.y);
 
 			ctx.fillStyle = "#000";
 			if(player.right){
 				ctx.fillRect(
-					7 * settings.sizes.x + settings.sizes.x - settings.sizes.x / 5, 
-					7 * settings.sizes.y + settings.sizes.y / 2 - settings.sizes.y / 5 + (settings.sizes.y / 5) / 2,
+					offset * settings.sizes.x + settings.sizes.x - settings.sizes.x / 5, 
+					offset * settings.sizes.y + settings.sizes.y / 2 - settings.sizes.y / 5 + (settings.sizes.y / 5) / 2,
 					settings.sizes.x / 5, 
 					settings.sizes.y / 5
 				);
 			}
 			if(player.left){
 				ctx.fillRect(
-					7 * settings.sizes.x, 
-					7 * settings.sizes.y + settings.sizes.y / 2 - settings.sizes.y / 5 + (settings.sizes.y / 5) / 2, 
+					offset * settings.sizes.x, 
+					offset * settings.sizes.y + settings.sizes.y / 2 - settings.sizes.y / 5 + (settings.sizes.y / 5) / 2, 
 					settings.sizes.x / 5, 
 					settings.sizes.y / 5
 				);
 			}
 			if(player.up){
 				ctx.fillRect(
-					7 * settings.sizes.x + settings.sizes.x / 2 - settings.sizes.x / 5 + (settings.sizes.x / 5) / 2, 
-					7 * settings.sizes.y,
+					offset * settings.sizes.x + settings.sizes.x / 2 - settings.sizes.x / 5 + (settings.sizes.x / 5) / 2, 
+					offset * settings.sizes.y,
 					settings.sizes.x / 5, 
 					settings.sizes.y / 5
 				);
 			}
 			if(player.down){
 				ctx.fillRect(
-					7 * settings.sizes.x + settings.sizes.x / 2 - settings.sizes.x / 5 + (settings.sizes.x / 5) / 2, 
-					7 * settings.sizes.y + settings.sizes.y - settings.sizes.y / 5,
+					offset * settings.sizes.x + settings.sizes.x / 2 - settings.sizes.x / 5 + (settings.sizes.x / 5) / 2, 
+					offset * settings.sizes.y + settings.sizes.y - settings.sizes.y / 5,
 					settings.sizes.x / 5, 
 					settings.sizes.y / 5
 				);
