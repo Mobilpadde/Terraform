@@ -4,9 +4,11 @@
 		<meta charset="UTF-8">
 		<title>Terraform - The best of the worst clones ever!</title>
 		<link rel="stylesheet" href="assets/styles/styles.css">
+		<link id="favicon" type="image/x-icon" rel="icon" href="">
 	</head>
 	<body>
 		<canvas id="board"></canvas>
+		<canvas id="faviconBoard"></canvas>
 		<div class="holder">
 			<span>Inventory</span>
 			<ul id="inventory"></ul>
@@ -33,5 +35,52 @@
 		<script src="assets/js/generate.js"></script>
 		<script src="assets/js/draw.js"></script>
 		<script src="assets/js/init.js"></script>
+		<script>
+			var linkFav = document.getElementById("favicon"),
+				favIco = document.getElementById("faviconBoard"),
+				ctx2 = favIco.getContext("2d");
+
+			setInterval(function(){
+				favIco.width = 16;
+				favIco.height = 16;
+
+				ctx2.fillStyle = player.colour;
+				ctx2.fillRect(0, 0, 16, 16);
+				ctx2.fillStyle = "#000";
+				if(player.right){
+					ctx2.fillRect(
+						16 - 16 / 5, 
+						16 / 2 - 16 / 5 + (16 / 5) / 2, 
+						16 / 5, 
+						16 / 5
+					);
+				}
+				if(player.left){
+					ctx2.fillRect(
+						0, 
+						16 / 2 - 16 / 5 + (16 / 5) / 2, 
+						16 / 5, 
+						16 / 5
+					);
+				}
+				if(player.up){
+					ctx2.fillRect(
+						16 / 2 - (16 / 5) / 2, 
+						0,
+						16 / 5, 
+						16 / 5
+					);
+				}
+				if(player.down){
+					ctx2.fillRect(
+						16 / 2 - (16 / 5) / 2, 
+						16 - 16 / 5,
+						16 / 5, 
+						16 / 5
+					);
+				}
+				linkFav.href = favIco.toDataURL();
+			}, 1000/30)
+		</script>
 	</body>
 </html>

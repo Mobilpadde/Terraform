@@ -35,3 +35,6 @@ body{
 	padding-top: 34px;
 	border: 1px solid red;
 }
+#faviconBoard{
+	display: none;
+}
