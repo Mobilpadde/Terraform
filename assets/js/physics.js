@@ -23,15 +23,15 @@ physics = {
 						map[y + 1] !== undefined && map[y] !== undefined &&
 						map[y][x + 1] !== undefined && map[y][x - 1] !== undefined
 					){
-						if(map[y][x + 1][0] === 0){
-							map[y][x + 1][0] = 3; // map[y][x]
+						if(map[y][x + 1][0] == 0){
+							map[y][x + 1][0] = 3; // map[y][x][0];
 							map[y][x][0] = 0;
-						}else if(map[y][x - 1][0] === 0){
-							map[y][x - 1][0] = 3; // map[y][x]
+						}else if(map[y][x - 1][0] == 0){
+							map[y][x - 1][0] = 3; // map[y][x][0];
 							map[y][x][0] = 0;
 						}
-						if(map[y + 1][x][0] === 0){
-							map[y + 1][x][0] = 3; // map[y][x]
+						if(map[y + 1][x][0] == 0){
+							map[y + 1][x][0] = 3; // map[y][x][0];
 							map[y][x][0] = 0;
 						}
 					}
