@@ -1,6 +1,6 @@
 settings = {
 	colours: {
-		player: ["#ac0ff0", "#ca1c79", "#f00f53"],
+		player: ["#ac0ff0", "#ca1c79", "#f00f53", "#e006a6", "#d5c72a", "#d42b55", "#ff008c"],
 		ground: {
 			0: ["#3c98c3", "sky"], 		// Sky
 			1: ["#0ef192", "Grass"], 	// Grass
