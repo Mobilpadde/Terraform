@@ -84,8 +84,14 @@ player = {
 			if(kc == 68 || kc == 39){ player.right 	= true }; // arrow right
 			if(kc == 83 || kc == 40){ player.down 	= true }; // arrow down
 			if(kc == 32)			{ player.space 	= true }; // sapce
-			if(kc == 77)			{ player.map 	= true }; // m
 			if(kc == 73)			{ player.colour =  settings.colours.player[Math.floor(settings.colours.player.length * Math.random())]}; // i
+			if(kc == 77){
+				if(player.map){
+					player.map = false;
+				}else{
+					player.map = true;
+				}
+			}; // m
 			//return false;
 		})
 		document.addEventListener("keyup", function(e){
@@ -95,7 +101,7 @@ player = {
 			if(kc == 68 || kc == 39){ player.right 	= false };
 			if(kc == 83 || kc == 40){ player.down 	= false };
 			if(kc == 32)			{ player.space 	= false };
-			if(kc == 77)			{ player.map 	= false };
+			//if(kc == 77)			{ player.map 	= false };
 		})
 	},
 	movement: function(){
