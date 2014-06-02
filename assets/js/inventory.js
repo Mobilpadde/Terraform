@@ -1,7 +1,7 @@
 inventory = {
 	items: {},
 	add: function(item){
-		item = Math.round(item);
+		item = Math.round(parseInt(item));
 		if(!isNaN(item) && item != 0){
 			if(inventory.items[item] == undefined){
 				inventory.items[item] = 1;
@@ -21,11 +21,13 @@ inventory = {
 		inventoryUser.innerHTML = "";
 		for(i in inventory.items){
 			var elm = document.createElement("li");
-			elm.style.background = settings.colours.ground[i][0];
-			elm.title = settings.colours.ground[i][1];
+			elm.style.background = settings.colours.scheme[i][0];
+			elm.title = settings.colours.scheme[i][1];
 			elm.innerText = inventory.items[i];
+			elm.dataset.thing = i;
 			inventoryUser.appendChild(elm);
 		}
+		inventory.select();
 	},
 	select: function(){
 		var items = inventoryUser.getElementsByTagName("li");

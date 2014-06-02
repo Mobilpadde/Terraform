@@ -12,7 +12,7 @@ player = {
 	dig: function(){
 		if(player.space){
 			inventory.show();
-			inventory.select();
+			crafting.empty();
 			if(player.left){
 				if(
 					map[player.y / settings.sizes.y] !== undefined &&
@@ -101,7 +101,7 @@ player = {
 			if(kc == 68 || kc == 39){ player.right 	= false };
 			if(kc == 83 || kc == 40){ player.down 	= false };
 			if(kc == 32)			{ player.space 	= false };
-			//if(kc == 77)			{ player.map 	= false };
+			if(kc == 67)			{ crafting.craft() };
 		})
 	},
 	movement: function(){

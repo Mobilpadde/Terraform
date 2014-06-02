@@ -5,10 +5,10 @@ draw = {
 			ctx.fillRect(x - settings.sizes.x / 8, y - settings.sizes.y / 8, settings.sizes.x + settings.sizes.x / 4, settings.sizes.y + settings.sizes.y / 4);
 		}
 		if(arr !== undefined){
-			ctx.fillStyle = settings.colours.ground[arr[0]][0];
+			ctx.fillStyle = settings.colours.scheme[arr[0]][0];
 			ctx.fillRect(x, y, settings.sizes.x, settings.sizes.y);
 		}else{
-			ctx.fillStyle = settings.colours.ground[5];
+			ctx.fillStyle = settings.colours.scheme[5];
 			ctx.fillRect(x, y, settings.sizes.x, settings.sizes.y);
 		}
 	},

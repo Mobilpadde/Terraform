@@ -20,11 +20,4 @@ var c = document.getElementById("board"),
 var map = new generate.map(1024, 512, init);
 
 player.keys();
-
-// If in bewteen two numbers
-Array.prototype.inBetween = function(num){
-	if(num >= this[0] && num <= this[1]){
-		return true;
-	}
-	return false;
-}
+crafting.select();
