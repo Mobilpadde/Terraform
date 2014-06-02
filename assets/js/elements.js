@@ -3,9 +3,16 @@ var elements = [
 	{
 		name: "Sand",
 		pattern: [
-			2, 3
+			2, 2
 		],
 		value: 4
+	},
+	{
+		name: "Grass",
+		pattern: [
+			2, 3
+		],
+		value: 3
 	},
 	{
 		name: "Avlsidian",
