@@ -9,13 +9,15 @@ inventory = {
 				inventory.items[item]++;
 			}
 		}
+		inventory.show();
 	},
 	remove: function(item){
-		if(inventory.items[item] == 1){
+		if(inventory.items[item] <= 1){
 			delete inventory.items[item];
 		}else{
 			inventory.items[item]--;
 		}
+		inventory.show();
 	},
 	show: function(){
 		inventoryUser.innerHTML = "";

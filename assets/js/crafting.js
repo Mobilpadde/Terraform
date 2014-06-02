@@ -15,13 +15,12 @@ crafting = {
 		for(var i = 0; i < items.length; i++){
 			arr.push(items[i].dataset.thing);
 		}
-		for(var i in crafting.patterns){
-			if(arr.equals(crafting.patterns[i])){
+		for(var i in elements){
+			if(arr.equals(elements[i].pattern)){
 				/*for(var j = 0; j < arr.length; j++){
 					inventory.remove(arr[j]);
 				}*/
-				inventory.add(i);
-				inventory.show();
+				inventory.add(elements[i].value);
 				crafting.empty();
 				break;
 			}
