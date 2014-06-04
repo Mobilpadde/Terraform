@@ -9,22 +9,45 @@ player = {
 	map: false,
 	type: 0,
 	colour: settings.colours.player[Math.floor(settings.colours.player.length * Math.random())],
+	pplave: false,
+	place: function(bool){
+		if(bool != undefined){
+			player.pplace = bool;
+		}
+		var place = document.getElementById("placeDig");
+		if(player.pplace){
+			place.innerText = "Placing Activated";
+		}else{
+			place.innerText = "Digging Activated";
+		}
+		return player.pplace;
+	},
 	dig: function(){
 		if(player.space){
-			inventory.show();
-			crafting.empty();
+			if(!player.place){
+				inventory.show();
+				crafting.empty();
+			}
 			if(player.left){
 				if(
 					map[player.y / settings.sizes.y] !== undefined &&
 					map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1] !== undefined
 				){
-					inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0]);
-					map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] = 0;
-					if(
-						map[player.y / settings.sizes.y + 1] !== undefined &&
-						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1] !== undefined
-					){
-						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1][1] = new Date().getTime();
+					if(player.place()){
+						var elm = document.getElementsByClassName("selected")[0];
+						inventory.remove(elm.dataset.thing);
+						elm.innerText = parseInt(elm.innerText) - 1;
+						map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] = elm.dataset.thing;
+						console.log(elm.dataset.thing);
+					}else{
+						inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0]);
+						map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] = 0;
+						if(
+							map[player.y / settings.sizes.y + 1] !== undefined &&
+							map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1] !== undefined
+						){
+							map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x - 1][1] = new Date().getTime();
+						}
 					}
 				}
 			}
@@ -33,13 +56,21 @@ player = {
 					map[player.y / settings.sizes.y] !== undefined &&
 					map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1] !== undefined
 				){
-					inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0])
-					map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0] = 0;
-					if(
-						map[player.y / settings.sizes.y + 1] !== undefined &&
-						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1] !== undefined
-					){
-						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1][1] = new Date().getTime();
+					if(player.place()){
+						var elm = document.getElementsByClassName("selected")[0];
+						inventory.remove(elm.dataset.thing);
+						elm.innerText = parseInt(elm.innerText) - 1;
+						map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0] = elm.dataset.thing;
+						console.log(elm.dataset.thing);
+					}else{
+						inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0])
+						map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0] = 0;
+						if(
+							map[player.y / settings.sizes.y + 1] !== undefined &&
+							map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1] !== undefined
+						){
+							map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x + 1][1] = new Date().getTime();
+						}
 					}
 				}
 			}
@@ -48,13 +79,20 @@ player = {
 					map[player.y / settings.sizes.y - 1] !== undefined &&
 					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x] !== undefined
 				){
-					inventory.add(map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x])
-					map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x][0] = 0;
-					if(
-						map[player.y / settings.sizes.y] !== undefined &&
-						map[player.y / settings.sizes.y][player.x / settings.sizes.x] !== undefined
-					){
-						map[player.y / settings.sizes.y][player.x / settings.sizes.x][1] = new Date().getTime();
+					if(player.place()){
+						var elm = document.getElementsByClassName("selected")[0];
+						inventory.remove(elm.dataset.thing);
+						elm.innerText = parseInt(elm.innerText) - 1;
+						map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x][0] = elm.dataset.thing;
+					}else{
+						inventory.add(map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x])
+						map[player.y / settings.sizes.y - 1][player.x / settings.sizes.x][0] = 0;
+						if(
+							map[player.y / settings.sizes.y] !== undefined &&
+							map[player.y / settings.sizes.y][player.x / settings.sizes.x] !== undefined
+						){
+							map[player.y / settings.sizes.y][player.x / settings.sizes.x][1] = new Date().getTime();
+						}
 					}
 				}
 			}
@@ -63,13 +101,20 @@ player = {
 					map[player.y / settings.sizes.y + 1] !== undefined && 
 					map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x] !== undefined
 				){
-					inventory.add(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0])
-					map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0] = 0;
-					if(
-						map[player.y / settings.sizes.y + 2] !== undefined &&
-						map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x] !== undefined
-					){
-						map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x][1] = new Date().getTime();
+					if(player.place()){
+						var elm = document.getElementsByClassName("selected")[0];
+						inventory.remove(elm.dataset.thing);
+						elm.innerText = parseInt(elm.innerText) - 1;
+						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0] = elm.dataset.thing;
+					}else{
+						inventory.add(map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0])
+						map[player.y / settings.sizes.y + 1][player.x / settings.sizes.x][0] = 0;
+						if(
+							map[player.y / settings.sizes.y + 2] !== undefined &&
+							map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x] !== undefined
+						){
+							map[player.y / settings.sizes.y + 2][player.x / settings.sizes.x][1] = new Date().getTime();
+						}
 					}
 				}
 			}
@@ -78,7 +123,6 @@ player = {
 	keys: function(){
 		document.addEventListener("keydown", function(e){
 			var kc = e.keyCode;
-			//e.preventDefault();
 			if(kc == 65 || kc == 37){ player.left 	= true }; // arrow left
 			if(kc == 87 || kc == 38){ player.up 	= true }; // arrow up
 			if(kc == 68 || kc == 39){ player.right 	= true }; // arrow right
@@ -92,7 +136,13 @@ player = {
 					player.map = true;
 				}
 			}; // m
-			//return false;
+			if(kc == 80){
+				if(player.place()){
+					player.place(false);
+				}else{
+					player.place(true);
+				}
+			}; // p
 		})
 		document.addEventListener("keyup", function(e){
 			var kc = e.keyCode;

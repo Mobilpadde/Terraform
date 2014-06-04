@@ -12,12 +12,14 @@ inventory = {
 		inventory.show();
 	},
 	remove: function(item){
-		if(inventory.items[item] <= 1){
+		if(inventory.items[item] == 1){
 			delete inventory.items[item];
+		}else if(inventory.items[item] == undefined){
+			inventory.show();
+			player.place(false);
 		}else{
 			inventory.items[item]--;
 		}
-		inventory.show();
 	},
 	show: function(){
 		inventoryUser.innerHTML = "";
@@ -35,10 +37,14 @@ inventory = {
 		var items = inventoryUser.getElementsByTagName("li");
 		for(var i = 0; i < items.length; i++){
 			items[i].addEventListener("click", function(e){
-				if(inventoryUser.getElementsByClassName("selected")[0]){
-					inventoryUser.getElementsByClassName("selected")[0].className = "";
+				if(this.className == "selected"){
+					this.className = "";
+				}else{
+					if(inventoryUser.getElementsByClassName("selected")[0]){
+						inventoryUser.getElementsByClassName("selected")[0].className = "";
+					}
+					this.className = "selected";
 				}
-				this.className = "selected";
 			})
 		}
 	}

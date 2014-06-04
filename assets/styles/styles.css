@@ -38,3 +38,8 @@ body{
 #faviconBoard{
 	display: none;
 }
+#placeDig{
+	color: red;
+	display: block;
+	clear: both;
+}
