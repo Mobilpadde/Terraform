@@ -1,6 +1,6 @@
 player = { 
 	x: settings.sizes.x * 7, 
-	y: settings.sizes.y * 7, 
+	y: settings.sizes.y * 7,
 	left: false, 
 	right: false, 
 	up: false, 
@@ -9,7 +9,7 @@ player = {
 	map: false,
 	type: 0,
 	colour: settings.colours.player[Math.floor(settings.colours.player.length * Math.random())],
-	pplave: false,
+	pplace: false,
 	place: function(bool){
 		if(bool != undefined){
 			player.pplace = bool;
@@ -37,7 +37,7 @@ player = {
 						var elm = document.getElementsByClassName("selected")[0];
 						inventory.remove(elm.dataset.thing);
 						elm.innerText = parseInt(elm.innerText) - 1;
-						map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] = elm.dataset.thing;
+						map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] =  elm.dataset.thing;
 						console.log(elm.dataset.thing);
 					}else{
 						inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0]);
