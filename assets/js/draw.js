@@ -13,10 +13,10 @@ draw = {
 		}
 	},
 	map: function(){
-		if(player.map){
-			for(var i = 0; i < holder.length; i++){
+		//if(player.map){
+			/*for(var i = 0; i < holder.length; i++){
 				holder[i].style.display = "none";
-			}
+			}*/
 			c.width = map[0].length * settings.sizes.x;
 			c.height = map.length * settings.sizes.y;
 			for(var y = 0; y < map.length; y++){
@@ -60,7 +60,7 @@ draw = {
 					settings.sizes.y / 5
 				);
 			}
-		}else{
+		/*}else{
 			var offset = 14;
 			for(var i = 0; i < holder.length; i++){
 				holder[i].style.display = "block";
@@ -114,6 +114,6 @@ draw = {
 					settings.sizes.y / 5
 				);
 			}
-		}
+		}*/
 	}
 }
