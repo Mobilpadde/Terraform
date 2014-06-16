@@ -7,7 +7,7 @@ settings = {
 			2: ["#b3664d", "Ground"], 	// Does not fall down
 			3: ["#3c45c3", "Water"],	// Does whatever water does
 			4: ["#ffcc00", "Sand"],		// Falls down
-			5: ["#333333", "Avlsidian"] // Undestructable
+			5: ["#333333", "Avlsidian"] 	// Indestructable
 		}
 	},
 	sizes: {
