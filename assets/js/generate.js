@@ -47,9 +47,9 @@ generate = {
 				if(this.tmp.y < this.ground.y){
 					var extra = 0
 					for(var y = 0; y < this.tmp.random; y++){
-						if(this.map[this.tmp.y + y] !== undefined){
+						if(this.map[y + this.tmp.y] !== undefined){
 							for(var x = 0; x < 3 + extra; x++){
-								if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
+								if(this.map[y + this.tmp.y][x + this.tmp.x - extra / 2] !== undefined){
 									this.map[y + this.tmp.y][x + this.tmp.x - extra / 2][0] = 2
 								}
 							}
