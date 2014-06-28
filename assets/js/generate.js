@@ -45,8 +45,6 @@ generate = {
 				this.tmp.y = this.ground.y - this.tmp.random
 				this.tmp.x = Math.floor((this.map[0].length - this.tmp.random) * Math.random()) + this.tmp.random
 
-				console.log(this.tmp)
-
 				if(this.tmp.y < this.ground.y){
 					var extra = 0
 					for(var y = 0; y < this.tmp.random; y++){
