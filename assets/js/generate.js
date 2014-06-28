@@ -38,7 +38,6 @@ generate = {
 		}
 
 		// Create mountains
-		
 		for(var i = 0; i < 10; i++){
 			this.tmp.random = Math.floor(Math.random() * 8)
 			if(this.tmp.random){
