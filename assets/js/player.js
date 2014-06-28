@@ -38,7 +38,6 @@ player = {
 						inventory.remove(elm.dataset.thing);
 						elm.innerText = parseInt(elm.innerText) - 1;
 						map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] =  elm.dataset.thing;
-						console.log(elm.dataset.thing);
 					}else{
 						inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0]);
 						map[player.y / settings.sizes.y][player.x / settings.sizes.x - 1][0] = 0;
@@ -61,7 +60,6 @@ player = {
 						inventory.remove(elm.dataset.thing);
 						elm.innerText = parseInt(elm.innerText) - 1;
 						map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0] = elm.dataset.thing;
-						console.log(elm.dataset.thing);
 					}else{
 						inventory.add(map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0])
 						map[player.y / settings.sizes.y][player.x / settings.sizes.x + 1][0] = 0;
