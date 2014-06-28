@@ -1,8 +1,8 @@
 generate = {
 	map: function(width, height, callback){
 		this.map = new Array();
-		this.ground = {y: false, x: false};
-		this.tmp = {y: false, x: false};
+		this.ground = {y: false, x: 0};
+		this.tmp = {y: false, x: false, random: false};
 
 		for(var y = 0; y < Math.floor(height / settings.sizes.y); y++){
 			var tmpMap = new Array();
@@ -19,7 +19,7 @@ generate = {
 
 		// Make some caves
 		for(var i = 0; i < (Math.floor(height / settings.sizes.y) * Math.floor(width / settings.sizes.x)) * 0.07; i++){
-			this.tmp.y = Math.floor(Math.random() * Math.floor(height / settings.sizes.y)) + this.ground.y;
+			this.tmp.y = Math.floor(Math.random() * Math.floor(height / settings.sizes.y)) + this.ground.y + 1;
 			this.tmp.x = Math.floor(this.map[0].length * Math.random());
 
 			if(Math.round(Math.random() * 6)){
@@ -32,6 +32,32 @@ generate = {
 				for(var y = 0; y < Math.floor(Math.random() * (7 - 3) + 3); y++){
 					if(this.map[this.tmp.y + y] !== undefined && this.map[this.tmp.y + y][this.tmp.x] !== undefined){
 						this.map[this.tmp.y + y][this.tmp.x][0] = 0;
+					}
+				}
+			}
+		}
+
+		// Create mountains
+		
+		for(var i = 0; i < 10; i++){
+			this.tmp.random = Math.floor(Math.random() * 8)
+			if(this.tmp.random){
+				this.tmp.y = this.ground.y - this.tmp.random
+				this.tmp.x = Math.floor((this.map[0].length - this.tmp.random) * Math.random()) + this.tmp.random
+
+				console.log(this.tmp)
+
+				if(this.tmp.y < this.ground.y){
+					var extra = 0
+					for(var y = 0; y < this.tmp.random; y++){
+						if(this.map[this.tmp.y + y] !== undefined){
+							for(var x = 0; x < 3 + extra; x++){
+								if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
+									this.map[y + this.tmp.y][x + this.tmp.x - extra / 2][0] = 2
+								}
+							}
+							extra += 2
+						}
 					}
 				}
 			}
