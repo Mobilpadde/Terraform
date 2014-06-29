@@ -70,7 +70,7 @@ generate = {
 
 			for(var y = 0; y < Math.floor(Math.random() * (4 - 3+ 1) + 3); y++){
 				if(this.map[this.tmp.y + y] !== undefined){
-					for(var x = 0; x < Math.floor(Math.random() * (5 - 4+ 1) + 5); x++){
+					for(var x = 0; x < Math.floor(Math.random() * (5 - 4 + 1) + 5); x++){
 						if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
 							this.map[this.tmp.y + y][this.tmp.x + x][0] = 3;
 						}
