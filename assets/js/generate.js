@@ -68,40 +68,14 @@ generate = {
 			this.tmp.y = Math.floor(Math.random() * Math.floor(height / settings.sizes.y) + (this.ground.y + 4));
 			this.tmp.x = Math.floor((this.map[0].length - 4) * Math.random());
 
-			switch(Math.round(Math.random() * 2)){
-				case 0:
-					for(var y = 0; y < 3; y++){
-						if(this.map[this.tmp.y + y] !== undefined){
-							for(var x = 0; x < 4; x++){
-								if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
-									this.map[this.tmp.y + y][this.tmp.x + x][0] = 3;
-								}
-							}
+			for(var y = 0; y < Math.floor(Math.random() * (4 - 3+ 1) + 3); y++){
+				if(this.map[this.tmp.y + y] !== undefined){
+					for(var x = 0; x < Math.floor(Math.random() * (5 - 4+ 1) + 5); x++){
+						if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
+							this.map[this.tmp.y + y][this.tmp.x + x][0] = 3;
 						}
 					}
-					break;
-				case 1:
-					for(var y = 0; y < 3; y++){
-						if(this.map[this.tmp.y + y] !== undefined){
-							for(var x = 0; x < 5; x++){
-								if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
-									this.map[this.tmp.y + y][this.tmp.x + x][0] = 3;
-								}
-							}
-						}
-					}
-					break;
-				case 2:
-					for(var y = 0; y < 4; y++){
-						if(this.map[this.tmp.y + y] !== undefined){
-							for(var x = 0; x < 4; x++){
-								if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
-									this.map[this.tmp.y + y][this.tmp.x + x][0] = 3;
-								}
-							}
-						}
-					}
-					break;
+				}
 			}
 		}
 
