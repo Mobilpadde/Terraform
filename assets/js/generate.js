@@ -38,6 +38,7 @@ generate = {
 		}
 
 		// Create mountains
+		this.tmp.missingVulcano = true
 		for(var i = 0; i < 10; i++){
 			this.tmp.mountainHeight = Math.floor(Math.random() * 8)
 			if(this.tmp.mountainHeight){
@@ -60,11 +61,20 @@ generate = {
 						}
 					}
 				}
+				if(this.tmp.missingVulcano && this.tmp.mountainHeight > 6){
+					console.log(this.tmp.y)
+					for(var y = this.tmp.y; y <= ~~(height / settings.sizes.y); y++){
+						if(this.map[y] !== undefined && this.map[y][this.tmp.x] !== undefined){
+							this.map[y][this.tmp.x][0] = 3
+						}
+					}
+					this.tmp.missingVulcano = false
+				}
 			}
 		}
 
 		// We need water, sir!
-		for(var i = 0; i < 20; i++){
+		/*for(var i = 0; i < 20; i++){
 			this.tmp.y = Math.floor(Math.random() * Math.floor(height / settings.sizes.y) + (this.ground.y + 4));
 			this.tmp.x = Math.floor((this.map[0].length - 4) * Math.random());
 
@@ -75,6 +85,13 @@ generate = {
 							this.map[this.tmp.y + y][this.tmp.x + x][0] = 3;
 						}
 					}
+				}
+			}
+		}*/
+		for(var y = this.ground.y + 1; y < this.map.length; y++){
+			for(var x = 0; x < this.map[0].length; x++){
+				if(this.map[y] !== undefined && this.map[y][x] !== undefined && this.map[y][x][0] == 0 && ~~(Math.random() * 11) == 0){
+					this.map[y][x][0] = 3
 				}
 			}
 		}
