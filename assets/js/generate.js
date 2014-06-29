@@ -45,12 +45,15 @@ generate = {
 				this.tmp.x = Math.floor((this.map[0].length - this.tmp.random) * Math.random()) + this.tmp.random
 
 				if(this.tmp.y < this.ground.y){
-					var extra = 0
+					var extra = 0,
+						mountainTop = (Math.floor(Math.random() * 2) == 0 ? 1 : 3)
 					for(var y = 0; y < this.tmp.random; y++){
 						if(this.map[y + this.tmp.y] !== undefined){
-							for(var x = 0; x < 3 + extra; x++){
-								if(this.map[y + this.tmp.y][x + this.tmp.x - extra / 2] !== undefined){
-									this.map[y + this.tmp.y][x + this.tmp.x - extra / 2][0] = 2
+							for(var x = 0; x < mountainTop + extra; x++){
+								if(this.map[y + this.tmp.y][Math.round(x + this.tmp.x - extra / 2)] !== undefined){
+									if(!((x == mountainTop + extra - 1 || x == 0) && Math.floor(Math.random() * 6) == 0)){
+										this.map[y + this.tmp.y][Math.round(x + this.tmp.x - extra / 2)][0] = 2
+									}
 								}
 							}
 							extra += 2
