@@ -62,7 +62,6 @@ generate = {
 					}
 				}
 				if(this.tmp.missingVulcano && this.tmp.mountainHeight > 6){
-					console.log(this.tmp.y)
 					for(var y = this.tmp.y; y <= ~~(height / settings.sizes.y); y++){
 						if(this.map[y] !== undefined && this.map[y][this.tmp.x] !== undefined){
 							this.map[y][this.tmp.x][0] = 3
