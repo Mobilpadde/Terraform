@@ -39,19 +39,19 @@ generate = {
 
 		// Create mountains
 		for(var i = 0; i < 10; i++){
-			this.tmp.random = Math.floor(Math.random() * 8)
-			if(this.tmp.random){
-				this.tmp.y = this.ground.y - this.tmp.random
-				this.tmp.x = Math.floor((this.map[0].length - this.tmp.random) * Math.random()) + this.tmp.random
+			this.tmp.mountainHeight = Math.floor(Math.random() * 8)
+			if(this.tmp.mountainHeight){
+				this.tmp.y = this.ground.y - this.tmp.mountainHeight
+				this.tmp.x = Math.floor((this.map[0].length - this.tmp.mountainHeight) * Math.random()) + this.tmp.mountainHeight
 
 				if(this.tmp.y < this.ground.y){
-					var extra = 0,
-						mountainTop = (Math.floor(Math.random() * 2) == 0 ? 1 : 3)
-					for(var y = 0; y < this.tmp.random; y++){
+					var extra = 0
+					this.tmp.mountainTop = (Math.floor(Math.random() * 2) == 0 ? 1 : 3)
+					for(var y = 0; y < this.tmp.mountainHeight; y++){
 						if(this.map[y + this.tmp.y] !== undefined){
-							for(var x = 0; x < mountainTop + extra; x++){
+							for(var x = 0; x < this.tmp.mountainTop + extra; x++){
 								if(this.map[y + this.tmp.y][Math.round(x + this.tmp.x - extra / 2)] !== undefined){
-									if(!((x == mountainTop + extra - 1 || x == 0) && Math.floor(Math.random() * 6) == 0)){
+									if(!((x == this.tmp.mountainTop + extra - 1 || x == 0) && Math.floor(Math.random() * 6) == 0)){
 										this.map[y + this.tmp.y][Math.round(x + this.tmp.x - extra / 2)][0] = 2
 									}
 								}
@@ -68,9 +68,9 @@ generate = {
 			this.tmp.y = Math.floor(Math.random() * Math.floor(height / settings.sizes.y) + (this.ground.y + 4));
 			this.tmp.x = Math.floor((this.map[0].length - 4) * Math.random());
 
-			for(var y = 0; y < Math.floor(Math.random() * (4 - 3+ 1) + 3); y++){
+			for(var y = 0; y < Math.floor(Math.random() * (4 - 3 + 1) + 3); y++){
 				if(this.map[this.tmp.y + y] !== undefined){
-					for(var x = 0; x < Math.floor(Math.random() * (5 - 4 + 1) + 5); x++){
+					for(var x = 0; x < Math.floor(Math.random() * (5 - 4 + 1) + 4); x++){
 						if(this.map[this.tmp.y + y][this.tmp.x + x] !== undefined){
 							this.map[this.tmp.y + y][this.tmp.x + x][0] = 3;
 						}
