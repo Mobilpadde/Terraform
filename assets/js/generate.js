@@ -38,7 +38,7 @@ generate = {
 		}
 
 		// Create mountains
-		this.tmp.missingVulcano = true
+		this.tmp.missingVolcano = true
 		for(var i = 0; i < 10; i++){
 			this.tmp.mountainHeight = Math.floor(Math.random() * 8)
 			if(this.tmp.mountainHeight){
@@ -61,7 +61,7 @@ generate = {
 						}
 					}
 				}
-				if(this.tmp.missingVulcano && this.tmp.mountainHeight > 6){
+				if(this.tmp.missingVolcano && this.tmp.mountainHeight > 6){
 					for(var y = this.tmp.y; y <= this.map.length; y++){
 						if(this.map[y] !== undefined && this.map[y][this.tmp.x] !== undefined){
 							if(y == this.tmp.y){
@@ -71,7 +71,7 @@ generate = {
 							}
 						}
 					}
-					this.tmp.missingVulcano = false
+					this.tmp.missingVolcano = false
 				}
 			}
 		}
